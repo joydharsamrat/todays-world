@@ -30,6 +30,7 @@ const displayNews = newses => {
     newsContainer.textContent = '';
     const itemsCount = document.getElementById('items-count');
     itemsCount.innerText = newses.length + ' Items Found';
+    newses.sort((a, b) => b.total_view - a.total_view)
     if (newses.length === 0) {
         newsContainer.innerText = 'Sorry !! No Items Found';
     }
