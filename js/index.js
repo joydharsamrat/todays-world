@@ -53,7 +53,7 @@ const displayNews = newses => {
                                     <div  class="d-flex w-25 justify-content-around align-items-center">
                                         <div class="d-flex justify-content-start"><img class="author-img" src="${news.author.img}" alt=""></div>
                                         <div class="d-flex  justify-content-end">
-                                            <p>${news.author.name}</p>
+                                            <p>${news.author.name ? news.author.name : 'no data found'}</p>
                                         </div>
                                     </div>
                                     <div>
@@ -82,9 +82,26 @@ const loadDetails = id => {
         .catch(error => console.log(error))
 }
 
+const getElementByIdFunction = id => {
+    const container = document.getElementById(id);
+    return container;
+}
+
 const displayDetails = news => {
-    const imgContainer = document.getElementById('details-img');
-    imgContainer.src = `${news.image_url}`
+    const imgContainer = getElementByIdFunction('details-img');
+    imgContainer.src = `${news.image_url}`;
+    const newsTitle = getElementByIdFunction('title');
+    newsTitle.innerText = `${news.title}`;
+    const detailsContainer = getElementByIdFunction('details-news');
+    detailsContainer.innerText = `${news.details}`
+    const authorImg = getElementByIdFunction('author-img');
+    authorImg.src = `${news.author.img}`;
+    const authorName = getElementByIdFunction('author-name');
+    authorName.innerText = `${news.author.name ? news.author.name : 'no data found'}`;
+    const newsRating = getElementByIdFunction('rating');
+    newsRating.innerText = `★★★★☆ ${news.rating.number}`;
+    const newsViews = getElementByIdFunction('view');
+    newsViews.innerText = `👁‍🗨 ${news.total_view ? news.total_view : 'No Data Found'}`;
 }
 
 loadCategories()
