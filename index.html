@@ -5,15 +5,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todays World</title>
+    <title>Today's World</title>
     <!-- bootstrap cdn css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- stylesheet link  -->
     <link rel="stylesheet" href="styles/syle.css">
+    <!-- logo  -->
+    <link rel="shortcut icon" href="logo/logo.png" type="image/x-icon">
 </head>
 
-<body>
+<body class="container bg-light">
+    <!-- header section starts  -->
+    <header>
+        <!-- nav bar  -->
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="logo/logo.png" alt="" width="50" height="34" class="d-inline-block align-text-top">
+                    <span class="fs-3 fw-bold">Today's World</span>
+                </a>
+                <div class="d-flex w-25 justify-content-around ">
+                    <a class="text-decoration-none text-black-50" href="">News</a>
+                    <a class="text-decoration-none text-black-50" href="">Blog</a>
+                </div>
+            </div>
+        </nav>
+        <hr>
+        <!-- Catagories  -->
+        <section id="catagories-container" class="d-flex justify-content-around">
+            <a class="text-decoration-none text-black fw-semibold" href="">Home</a>
+        </section>
+    </header>
+    <!-- header section ends  -->
+    <!-- main section starts  -->
+    <main class="my-3">
+        <!-- Items Count  -->
+        <section id="items-count" class="bg-white p-2 text-center">
+
+        </section>
+        <!-- Sort and trending section  -->
+        <section class="my-4 d-flex justify-content-around px-5">
+            <div class="d-flex justify-content-start w-50">
+                <p>Sort By View:</p>
+                <div class="d-flex justify-content-around bg-white w-25">
+                    <p>Default</p>
+                    <p>⤋</p>
+                </div>
+            </div>
+            <div class="w-50 text-end">
+                <button class="btn btn-primary">Today's Pick</button>
+                <button type="button" class="btn btn-outline-primary">Trending</button>
+            </div>
+        </section>
+        <!-- news section  -->
+
+    </main>
+    <!-- main section ends  -->
+
 
 
     <!-- bootstrap cdn js  -->
