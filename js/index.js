@@ -63,7 +63,7 @@ const displayNews = newses => {
                                         <p>★★★★☆ ${news.rating.number}</p>
                                     </div>
                                     <div>
-                                    <a onclick="loadDetails('${news._id}')" class="text-decoration-none fs-2" href="">➙</a>
+                                    <a onclick="loadDetails('${news._id}')" class="text-decoration-none fs-2" href="" data-bs-toggle="modal" data-bs-target="#newsDetails">➙</a>
                                     </div>
                                 </div>
                             </div>
@@ -76,9 +76,16 @@ const displayNews = newses => {
 }
 
 const loadDetails = id => {
-
+    fetch(`https://openapi.programming-hero.com/api/news/${id}`)
+        .then(res => res.json())
+        .then(data => displayDetails(data.data[0]))
+        .catch(error => console.log(error))
 }
 
+const displayDetails = news => {
+    const imgContainer = document.getElementById('details-img');
+    imgContainer.src = `${news.image_url}`
+}
 
 loadCategories()
 loadNews(08)
