@@ -44,25 +44,26 @@ const displayNews = newses => {
                             <img src="${news.thumbnail_url}" class="img-fluid rounded-start" alt="...">
                         </div>
                         <div class="col-md-9">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                    additional content. This content is a little bit longer.
-                                </p>
-                                <div class="d-flex justify-content-around align-items-center">
-                                    <div>
-                                        <img src="" alt="">
-                                        <p>x</p>
-                                        <p>y</p>
+                            <div class="card-body d-flex flex-column gap-5">
+                                <div>
+                                    <h5 class="card-title">${news.title}</h5>
+                                    <p class="card-text">${news.details.slice(0, 200)}... </p>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-5">
+                                    <div  class="d-flex w-25 justify-content-around align-items-center">
+                                        <div class="d-flex justify-content-start"><img class="author-img" src="${news.author.img}" alt=""></div>
+                                        <div class="d-flex  justify-content-end">
+                                            <p>${news.author.name}</p>
+                                        </div>
                                     </div>
                                     <div>
-                                        <p>x</p>
+                                        <p> 👁‍🗨 ${news.total_view ? news.total_view : 'No Data Found'}</p>
+                                    </div>
+                                    <div class="d-none d-xl-block">
+                                        <p>★★★★☆ ${news.rating.number}</p>
                                     </div>
                                     <div>
-                                        <p>x</p>
-                                    </div>
-                                    <div>
-                                        <p>x</p>
+                                    <a onclick="loadDetails('${news._id}')" class="text-decoration-none fs-2" href="">➙</a>
                                     </div>
                                 </div>
                             </div>
@@ -73,4 +74,11 @@ const displayNews = newses => {
         })
     }
 }
+
+const loadDetails = id => {
+
+}
+
+
 loadCategories()
+loadNews(08)
