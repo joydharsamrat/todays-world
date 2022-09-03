@@ -13,10 +13,11 @@ const displayCategories = categories => {
 
         const catagoriesParagraph = document.createElement('p');
         catagoriesParagraph.innerHTML = `
-        <a href="#" class="text-decoration-none text-black fw-semibold" onclick="loadNews(${category.category_id})">${category.category_name}</a>
+        <a href="#" class="text-decoration-none text-black fw-semibold" onclick="loadNews(${category.category_id},toggleLoader(true))">${category.category_name}</a>
         `;
         catagoriesContainer.appendChild(catagoriesParagraph);
     });
+
 }
 const loadNews = categoryId => {
     fetch(`https://openapi.programming-hero.com/api/news/category/${'0' + categoryId}`)
@@ -39,6 +40,8 @@ const displayNews = newses => {
             const newsDiv = document.createElement('div');
             newsDiv.classList.add('card');
             newsDiv.classList.add('mb-3');
+            newsDiv.classList.add('p-3');
+
             newsDiv.innerHTML = `
                     <div class="row g-0">
                         <div class="col-md-3">
@@ -48,7 +51,7 @@ const displayNews = newses => {
                             <div class="card-body d-flex flex-column gap-5">
                                 <div>
                                     <h5 class="card-title">${news.title}</h5>
-                                    <p class="card-text">${news.details.slice(0, 200)}... </p>
+                                    <p class="card-text">${news.details.slice(0, 300)}... </p>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center mt-5">
                                     <div  class="d-flex w-25 justify-content-around align-items-center">
@@ -74,6 +77,7 @@ const displayNews = newses => {
             newsContainer.appendChild(newsDiv);
         })
     }
+    toggleLoader(false);
 }
 
 const loadDetails = id => {
@@ -105,5 +109,17 @@ const displayDetails = news => {
     newsViews.innerText = `👁‍🗨 ${news.total_view ? news.total_view : 'No Data Found'}`;
 }
 
-loadCategories()
-loadNews(08)
+// loader //
+const toggleLoader = isLoading => {
+    const loader = document.getElementById('loader');
+    if (isLoading === true) {
+        loader.classList.remove('d-none');
+    }
+    else {
+        loader.classList.add('d-none');
+    }
+}
+
+
+loadCategories();
+loadNews(08);
